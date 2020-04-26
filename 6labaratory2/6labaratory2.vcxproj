@@ -89,7 +89,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -101,7 +101,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -139,9 +139,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\6labaratory\6labaratory\logic.c" />
-    <ClCompile Include="..\..\6labaratory\6labaratory\main.c" />
     <ClCompile Include="..\..\6labaratory\6labaratory\randnumber.c" />
     <ClCompile Include="..\..\6labaratory\6labaratory\world.c" />
+    <ClCompile Include="wmain.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\6labaratory\6labaratory\logic.h" />

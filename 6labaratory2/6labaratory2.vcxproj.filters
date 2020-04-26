@@ -18,13 +18,13 @@
     <ClCompile Include="..\..\6labaratory\6labaratory\logic.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\6labaratory\6labaratory\main.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\6labaratory\6labaratory\randnumber.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="..\..\6labaratory\6labaratory\world.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="wmain.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
