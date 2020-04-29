@@ -56,14 +56,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
-    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,g_szClassName,"Labaratory6",WS_OVERLAPPEDWINDOW,CW_USEDEFAULT, CW_USEDEFAULT, 700, 700,NULL, NULL, hInstance, NULL);
+    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,g_szClassName,L"Labaratory6",WS_OVERLAPPEDWINDOW,CW_USEDEFAULT, CW_USEDEFAULT, 700, 700,NULL, NULL, hInstance, NULL);
     if (hwnd == NULL)
     {
         MessageBox(NULL, "Window Creation Failed!", "Error!",
             MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
-    while (1) {
+    while (GetMessage(&Msg, NULL, 0, 0) > 0){
+        TranslateMessage(&Msg);
+        DispatchMessage(&Msg);
         World W1 = MakeFullWorld(NumberOfString, NumberOfColumn);
         Point* points = MakePointsInWorld(15, W1);
         FreeAllPoints(&W1, points, 15);
@@ -78,12 +80,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
         Sleep(Time*10);
         InvalidateRect(hwnd, NULL, TRUE);
-        UpdateWindow(hwnd);
-    }
-    while (GetMessage(&Msg, NULL, 0, 0) > 0)
-    {
-        TranslateMessage(&Msg);
-        DispatchMessage(&Msg);
     }
 
     return Msg.wParam;
