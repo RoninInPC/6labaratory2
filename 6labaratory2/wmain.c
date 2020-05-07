@@ -52,35 +52,43 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
     if (!RegisterClassEx(&wc))
     {
-        MessageBox(NULL, "Window Registration Failed!", "Error!",
+        MessageBox(NULL, L"Window Registration Failed!", L"Error!",
             MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
     hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,g_szClassName,L"Labaratory6",WS_OVERLAPPEDWINDOW,CW_USEDEFAULT, CW_USEDEFAULT, 700, 700,NULL, NULL, hInstance, NULL);
     if (hwnd == NULL)
     {
-        MessageBox(NULL, "Window Creation Failed!", "Error!",
+        MessageBox(NULL, L"Window Creation Failed!", L"Error!",
             MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
     while (GetMessage(&Msg, NULL, 0, 0) > 0){
-        TranslateMessage(&Msg);
-        DispatchMessage(&Msg);
         World W1 = MakeFullWorld(NumberOfString, NumberOfColumn);
         Point* points = MakePointsInWorld(15, W1);
         FreeAllPoints(&W1, points, 15);
-        ShowWindow(hwnd, nCmdShow);
         HDC hdc = GetDC(hwnd);
         for (int i = 0; i < NumberOfString; i++) {
             for (int j = 0; j < NumberOfColumn; j++) {
                 if (W1.Arr[i][j] == 35) {
+                    HBRUSH hBrush = CreateSolidBrush(RGB(255, 250, 250));
+                    SelectObject(hdc, hBrush);
                     Ellipse(hdc, 10 + (i + 1) * 20, 10 + (j + 1) * 20, 10 + i * 20, 10 + j * 20);
+                    DeleteObject(hBrush);
+                }
+                else
+                {
+                    HBRUSH hBrush = CreateSolidBrush(RGB(0, 0, 0));
+                    SelectObject(hdc, hBrush);
+                    Ellipse(hdc, 10 + (i + 1) * 20, 10 + (j + 1) * 20, 10 + i * 20, 10 + j * 20);
+                    DeleteObject(hBrush);
                 }
             }
         }
-        Sleep(Time*10);
-        InvalidateRect(hwnd, NULL, TRUE);
+        TranslateMessage(&Msg);
+        DispatchMessage(&Msg);
+        ShowWindow(hwnd, nCmdShow);
+       
     }
-
     return Msg.wParam;
 }
